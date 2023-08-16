@@ -5,6 +5,7 @@ Intended for my own personal learning and use
 # Starts from stock [Silverblue](https://quay.io/repository/fedora-ostree-desktops/silverblue?tab=tags) image and installs:
 - Nvidia driver
 - OpenZFS 2
+- [v4l2loopback](https://github.com/umlaeute/v4l2loopback)
 # removes:
 - firefox
 - gnome-software
