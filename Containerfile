@@ -28,7 +28,9 @@ RUN modinfo /usr/lib/modules/${KERNEL_VERSION}/extra/nvidia/nvidia.ko.xz
 COPY --from=ghcr.io/kth8/kmod-zfs:${KERNEL_VERSION} /rpms /var/tmp
 COPY --from=ghcr.io/ublue-os/akmods:${FEDORA_MAJOR_VERSION} /rpms/kmods/kmod-v4l2loopback*.rpm /var/tmp
 RUN rpm-ostree install /var/tmp/*.rpm
-RUN rpm-ostree install libvirt virt-manager
+
+ADD https://download.docker.com/linux/fedora/docker-ce.repo /etc/yum.repos.d/
+RUN rpm-ostree install libvirt virt-manager docker-ce
 
 COPY cosign.pub /etc/pki/containers/kth8.pub
 COPY policy.json /etc/containers/policy.json

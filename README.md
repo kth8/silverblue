@@ -8,6 +8,7 @@ Intended for my own personal learning and use
 - [v4l2loopback](https://github.com/umlaeute/v4l2loopback)
 - Libvirt
 - Virt-manager
+- Docker
 # removes:
 - firefox
 - gnome-software
