@@ -1,6 +1,6 @@
 # Inspired by [Universal Blue](https://github.com/ublue-os)
 
-Intended for my own personal learning and use
+Intended for my own personal learning and use.
 
 # Starts from stock [Silverblue](https://quay.io/repository/fedora-ostree-desktops/silverblue?tab=tags) image and installs:
 - Nvidia driver
@@ -10,9 +10,11 @@ Intended for my own personal learning and use
 - Libvirt
 - Virt-manager
 - Docker
-# removes:
-- firefox
-- gnome-software
+### removes:
+- Firefox
+- Gnome-software
+
+### To rebase
 
 ```shell
 rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/kth8/silverblue:latest
@@ -29,45 +31,15 @@ rpm-ostree kargs \
     --append-if-missing=modprobe.blacklist=nouveau \
     --append-if-missing=nvidia-drm.modeset=1
 ```
-### Video playback
-
-Additional runtime packages are added for enabling hardware-accelerated video playback. This can the enabled in Firefox (RPM or flatpak) by setting the following options to `true` in `about:config`:
-
-* `gfx.webrender.all`
-* `media.ffmpeg.vaapi.enabled`
-
-Install Flatpak Nvidia runtime matching host driver version (for example):
-```
-flatpak install --user flathub org.freedesktop.Platform.GL.nvidia-535-98
-```
-
-Install Flatpak ffmpeg runtime
-```
-flatpak install --user flathub org.freedesktop.Platform.ffmpeg-full
-```
-
-
-Extensive host access and reduced sandboxing is needed for Firefox flatpak to use `/usr/lib64/dri/nvidia_drv_video.so`:
-
-```shell
-flatpak override \
-    --user \
-    --filesystem=host-os \
-    --env=LIBVA_DRIVER_NAME=nvidia \
-    --env=LIBVA_DRIVERS_PATH=/run/host/usr/lib64/dri \
-    --env=LIBVA_MESSAGING_LEVEL=1 \
-    --env=MOZ_DISABLE_RDD_SANDBOX=1 \
-    --env=NVD_BACKEND=direct \
-    --env=MOZ_ENABLE_WAYLAND=1 \
-    org.mozilla.firefox
-```
 
 ### To revert back
 
 ```shell
-flatpak override --user --reset org.mozilla.firefox
-rpm-ostree kargs --delete-if-present=rd.driver.blacklist=nouveau --delete-if-present=modprobe.blacklist=nouveau --delete-if-present=nvidia-drm.modeset=1 
-rpm-ostree rebase --reboot fedora:fedora/38/x86_64/silverblue
+rpm-ostree kargs \
+    --delete-if-present=rd.driver.blacklist=nouveau \
+    --delete-if-present=modprobe.blacklist=nouveau \
+    --delete-if-present=nvidia-drm.modeset=1 
+rpm-ostree rebase --reboot fedora:fedora/39/x86_64/silverblue
 ```
 
 ## Verification
