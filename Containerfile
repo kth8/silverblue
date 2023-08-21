@@ -30,7 +30,7 @@ COPY --from=ghcr.io/ublue-os/akmods:${FEDORA_MAJOR_VERSION} /rpms/kmods/kmod-v4l
 RUN rpm-ostree install /var/tmp/*.rpm
 
 ADD https://download.docker.com/linux/fedora/docker-ce.repo /etc/yum.repos.d/
-RUN rpm-ostree install libvirt virt-manager docker-ce
+RUN rpm-ostree install libvirt virt-manager nvtop docker-ce
 
 COPY cosign.pub /etc/pki/containers/kth8.pub
 COPY policy.json /etc/containers/policy.json
