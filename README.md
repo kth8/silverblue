@@ -41,11 +41,3 @@ rpm-ostree kargs \
     --delete-if-present=nvidia-drm.modeset=1 
 rpm-ostree rebase --reboot fedora:fedora/39/x86_64/silverblue
 ```
-
-## Verification
-
-These images are signed with sigstore's [cosign](https://docs.sigstore.dev/cosign/overview/). You can verify the signature by downloading the `cosign.pub` key from this repo and running the following command:
-
-```shell
-cosign verify --key cosign.pub ghcr.io/kth8/silverblue:latest
-```

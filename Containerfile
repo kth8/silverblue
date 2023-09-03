@@ -29,9 +29,7 @@ RUN rpm-ostree install /var/tmp/*.rpm
 ADD https://download.docker.com/linux/fedora/docker-ce.repo /etc/yum.repos.d/
 RUN rpm-ostree install libvirt virt-manager nvtop docker-ce
 
-COPY cosign.pub /etc/pki/containers/kth8.pub
-COPY policy.json /etc/containers/policy.json
-COPY kth8.yaml /etc/containers/registries.d/kth8.yaml
+COPY etc /etc
 
 RUN rm -rf /tmp/* /var/*
 RUN ostree container commit
