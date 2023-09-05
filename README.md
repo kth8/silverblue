@@ -17,8 +17,8 @@ Intended for my own personal learning and use.
 ### To rebase
 
 ```shell
-rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/kth8/silverblue:latest
-rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/kth8/silverblue:latest
+rpm-ostree rebase --reboot ostree-unverified-image:docker://ghcr.io/kth8/silverblue:38
+rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/kth8/silverblue:38
 ```
 
 ### Set kargs after rebasing
@@ -39,5 +39,5 @@ rpm-ostree kargs \
     --delete-if-present=rd.driver.blacklist=nouveau \
     --delete-if-present=modprobe.blacklist=nouveau \
     --delete-if-present=nvidia-drm.modeset=1 
-rpm-ostree rebase --reboot fedora:fedora/39/x86_64/silverblue
+rpm-ostree rebase --reboot fedora:fedora/38/x86_64/silverblue
 ```
