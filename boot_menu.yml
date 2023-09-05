@@ -1,0 +1,5 @@
+ublue_variants:
+  - label: kth8/silverblue
+    ks: /kickstart/ublue-os-nvidia.ks
+    flavors:
+      - label: silverblue
