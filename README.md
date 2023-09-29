@@ -6,7 +6,6 @@ Intended for my own personal learning and use.
 - [Nvidia driver](https://github.com/kth8/kmod-nvidia)
 - [Nvtop](https://github.com/Syllo/nvtop)
 - [OpenZFS 2](https://github.com/kth8/kmod-zfs)     
-- [v4l2loopback](https://github.com/umlaeute/v4l2loopback)
 - [Docker](https://docs.docker.com/engine/)
 - Libvirt
 - Virt-manager
